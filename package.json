@@ -4,18 +4,16 @@
   "description": "Ingima test technique",
   "main": "server.js",
   "scripts": {
-	"server": "node ./server.js && client",
+	"firstInstall": "npm install && npm run installServer && npm run installClient ",
+	"installServer": "cd server && npm install",
+	"installClient": "cd client && npm install",
 	"client": "cd client && npm run start",
-	"server": "node server.js",
+	"server": "cd server && npm run start",
 	"start": "concurrent \"npm run client\" \"npm run server\" "
   },
   "author": "RCARROUSSEL",
   "license": "ISC",
   "dependencies": {
-	"concurrently": "^1.0.0",
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "html-entities": "^1.2.0",
-    "request": "^2.79.0"
+	"concurrently": "^1.0.0"
   }
 }
