@@ -1,0 +1,21 @@
+{
+  "name": "ingima",
+  "version": "1.0.0",
+  "description": "Ingima test technique",
+  "main": "server.js",
+  "scripts": {
+	"server": "node ./server.js && client",
+	"client": "cd client && npm run start",
+	"server": "node server.js",
+	"start": "concurrent \"npm run client\" \"npm run server\" "
+  },
+  "author": "RCARROUSSEL",
+  "license": "ISC",
+  "dependencies": {
+	"concurrently": "^1.0.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "html-entities": "^1.2.0",
+    "request": "^2.79.0"
+  }
+}
