@@ -11,7 +11,7 @@ Then clone the repository into your computer.
 ```sh
 $ git clone https://github.com/JohnMurdok/ingimaProject.git
 ```
-Install the dependencies and devDependencies and start the server.
+Install the dependencies and devDependencies.
 
 ```sh
 $ cd ingimaProject
