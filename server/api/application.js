@@ -1,5 +1,4 @@
 var express    = require('express'),
-	path 	   = require ('path'),
     app        = express(),
     applicationResources = require('./resources.js'),
 	bodyParser = require('body-parser');
@@ -47,11 +46,6 @@ app.initRouters = function(){
     app.use("/api/"+app.resources.routers[i],router);
   }
 };
-
-app.use("/",express.static(__dirname + 'cl/ient'));
-app.get('/app', function(req, res, next){
-  res.render('./client/index');
-});
 
 app.initRouters();
 module.exports = app;

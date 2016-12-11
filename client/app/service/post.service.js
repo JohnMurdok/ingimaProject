@@ -13,6 +13,7 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var Observable_1 = require('rxjs/Observable');
+var server_config_1 = require('../conf/server.config');
 var PostService = (function () {
     function PostService(http) {
         this.http = http;
@@ -20,7 +21,7 @@ var PostService = (function () {
     PostService.prototype.getPosts = function (params) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post('http://127.0.0.1:9000/api/posts/', params, options)
+        return this.http.post(server_config_1.ServerConfig.getUrl('posts'), params, options)
             .map(this.extractPostData)
             .catch(this.handleError);
     };

@@ -13,6 +13,7 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var Observable_1 = require('rxjs/Observable');
+var server_config_1 = require('../conf/server.config');
 var CommentService = (function () {
     function CommentService(http) {
         this.http = http;
@@ -20,7 +21,7 @@ var CommentService = (function () {
     CommentService.prototype.getComments = function (params) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post('http://127.0.0.1:9000/api/comments/', params, options)
+        return this.http.post(server_config_1.ServerConfig.getUrl('comments'), params, options)
             .map(this.extractCommentData)
             .catch(this.handleError);
     };

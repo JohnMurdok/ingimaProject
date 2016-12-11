@@ -3,7 +3,7 @@ import { Http, Response,RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
-
+import {ServerConfig} from '../conf/server.config';
 import { Post, PostParams } from '../model/post';
 
 @Injectable()
@@ -14,7 +14,7 @@ export class PostService {
 	let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 	
-    return this.http.post('http://127.0.0.1:9000/api/posts/', params, options)
+    return this.http.post(ServerConfig.getUrl('posts'), params, options)
                     .map(this.extractPostData)
                     .catch(this.handleError);
   }

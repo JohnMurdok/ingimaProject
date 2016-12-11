@@ -20,7 +20,7 @@ function getComments(jsonData, offset){
 	var comments = [];
 	for(var i = offset; i < jsonData.length; i++){
 		var comment = jsonData[i];
-		if(!comment[i] || !comment.data || !comment.data.children){
+		if(!comment || !comment.data || !comment.data.children){
 			continue;
 		}
 		for(var j = 0; j < comment.data.children.length; j++){
