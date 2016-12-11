@@ -20,10 +20,16 @@ function getComments(jsonData, offset){
 	var comments = [];
 	for(var i = offset; i < jsonData.length; i++){
 		var comment = jsonData[i];
+		if(!comment[i] || !comment.data || !comment.data.children){
+			continue;
+		}
 		for(var j = 0; j < comment.data.children.length; j++){
-			var item = comment.data.children[j];
+			var item = comment.data.children[j]; 
+			if(!item || !item.data){
+				continue;
+			}
 			comments.push({
-				date: item.data.created,
+				date:Math.floor(item.data.created * 1000),
 				author: item.data.author,
 				postId: item.data.parent_id,
 				commentId: item.data.id,

@@ -20,12 +20,15 @@ router.post('/',function(req,res){
 function getPosts(jsonData, offset){
 	var posts = [];
 	for(var i = offset; i < jsonData.data.children.length; i++){
+		if(!jsonData.data){
+			continue;
+		}
 		var item = jsonData.data.children[i];
 		posts.push({
 			date: Math.floor(item.data.created * 1000),
 			author: item.data.author,
 			postId: item.data.id,
-			postContent: entities.decode(item.data.selftext_html || "No content")
+			postContent: entities.decode(item.data.selftext_html || "") || item.data.title || "No content"
 		});		
 	}
 	return posts;
